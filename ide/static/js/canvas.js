@@ -8,6 +8,7 @@ import $ from 'jquery'
 
 class Canvas extends React.Component {
   constructor(props) {
+    
     super(props);
     this.allowDrop = this.allowDrop.bind(this);
     this.drop = this.drop.bind(this);

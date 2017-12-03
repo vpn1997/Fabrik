@@ -32,8 +32,10 @@ def import_json(request):
         except Exception:
             return JsonResponse({'result': 'error', 'error': 'Invalid JSON'})
 
-    model = model_from_json(json.dumps(model))
-
+    try:
+        model = model_from_json(json.dumps(model))
+    except:
+        print("NO model")
     layer_map = {
         'InputLayer': Input,
         'Dense': Dense,
@@ -93,7 +95,7 @@ def import_json(request):
         'BatchNormalization': BatchNorm,
         'GaussianNoise': GaussianNoise,
         'GaussianDropout': GaussianDropout,
-        'AlphaDropout': AlphaDropout
+        'AlphaDropout': AlphaDropout,
     }
 
     hasActivation = ['Conv1D', 'Conv2D', 'Conv3D', 'Conv2DTranspose', 'Dense', 'LocallyConnected1D',
@@ -111,6 +113,7 @@ def import_json(request):
         name = ''
         class_name = layer.__class__.__name__
         if (class_name in layer_map):
+            
             # This extra logic is to handle connections if the layer has an Activation
             if (class_name in hasActivation and layer.activation.func_name != 'linear'):
                 net[layer.name+class_name] = layer_map[class_name](layer)
