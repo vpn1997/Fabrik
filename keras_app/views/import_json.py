@@ -113,7 +113,7 @@ def import_json(request):
         name = ''
         class_name = layer.__class__.__name__
         if (class_name in layer_map):
-            
+
             # This extra logic is to handle connections if the layer has an Activation
             if (class_name in hasActivation and layer.activation.func_name != 'linear'):
                 net[layer.name+class_name] = layer_map[class_name](layer)

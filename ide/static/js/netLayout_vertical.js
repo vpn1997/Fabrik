@@ -30,19 +30,21 @@ the algorithm checks if the location at that depth is occupied by any other node
 along the X direction, if yes, the closest available right or left position is 
 assigned */
 function allocatePosition(layerId, preferredPosition){
-  
+  prompt(layerId+" --- "+preferredPosition);
   if (!map.hasOwnProperty(preferredPosition[1])) {
     map[preferredPosition[1]] = [];
   }
+  map[0]=[];
   let positionsY = map[preferredPosition[1]];
+  prompt("positionY --- "+positionsY);
   if (positionsY.indexOf(preferredPosition[0]) != -1) { // If X position is taken
     let temp = preferredPosition[0], i = 2;
     while (1) { // eslint-disable-line
       
-      if(temp+i || temp-i)
-      {
+      
       if(positionsY.indexOf(temp+i) === -1){
         // may be avoid overlapping edges
+        prompt(preferredPosition[1] - 1);
         if (map[preferredPosition[1] - 1].indexOf(temp + i) === -1) {
           position[layerId] = [temp + i, preferredPosition[1]];
           map[preferredPosition[1]].push(position[layerId][0]);
@@ -57,7 +59,7 @@ function allocatePosition(layerId, preferredPosition){
           return;
         }
       }
-    }
+    
       i = i + 2;
     }
 
