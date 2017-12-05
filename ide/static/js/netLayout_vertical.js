@@ -30,7 +30,6 @@ the algorithm checks if the location at that depth is occupied by any other node
 along the X direction, if yes, the closest available right or left position is 
 assigned */
 function allocatePosition(layerId, preferredPosition){
-  
   if (!map.hasOwnProperty(preferredPosition[1])) {
     map[preferredPosition[1]] = [];
   }
