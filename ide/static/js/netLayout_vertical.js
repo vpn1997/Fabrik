@@ -35,7 +35,7 @@ function allocatePosition(layerId, preferredPosition){
   }
   map[0]=[];
   let positionsY = map[preferredPosition[1]];
-   if (positionsY.indexOf(preferredPosition[0]) != -1) { // If X position is taken
+  if (positionsY.indexOf(preferredPosition[0]) != -1) { // If X position is taken
     let temp = preferredPosition[0], i = 2;
     while (1) { // eslint-disable-line
       
