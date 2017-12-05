@@ -30,6 +30,7 @@ function allocatePosition(layerId, preferredPosition){
     map[preferredPosition[0]] = [];
   }
   let positionsY = map[preferredPosition[0]];
+
   if (positionsY.indexOf(preferredPosition[1]) != -1) {
     let temp = preferredPosition[1], i=2;
     while (1) { // eslint-disable-line
