@@ -38,8 +38,6 @@ function allocatePosition(layerId, preferredPosition){
   if (positionsY.indexOf(preferredPosition[0]) != -1) { // If X position is taken
     let temp = preferredPosition[0], i = 2;
     while (1) { // eslint-disable-line
-      
-      
       if(positionsY.indexOf(temp+i) === -1){
         // may be avoid overlapping edges
       
@@ -57,7 +55,6 @@ function allocatePosition(layerId, preferredPosition){
           return;
         }
       }
-    
       i = i + 2;
     }
 
