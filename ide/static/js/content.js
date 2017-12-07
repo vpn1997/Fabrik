@@ -717,6 +717,10 @@ class Content extends React.Component {
                         <h3 className="zoo-modal-text">Caption</h3>
                         <ModelElement importNet={this.importNet} framework="caffe" id="CoCo_Caption">CoCo Caption</ModelElement>
                         </div>
+                        <div className="zoo-modal-model">
+                        <h3 className="zoo-modal-text">VQA</h3>
+                        <ModelElement importNet={this.importNet} framework="keras" id="VQA">VQA</ModelElement>
+                        </div>
                         </div>
                         </div>
 
