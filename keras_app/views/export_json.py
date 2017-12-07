@@ -78,6 +78,7 @@ def export_json(request):
 
         # Check if conversion is possible
         for layerId in net:
+            print layerId
             layerType = net[layerId]['info']['type']
             if ('Loss' in layerType or layerType == 'Accuracy' or layerType in layer_map):
                 pass
@@ -97,6 +98,7 @@ def export_json(request):
             for layerId in inputs:
                 if processedLayer[layerId] is False:
                     return False
+            print "hogya1"
             return True
 
         # Finding the data layer
