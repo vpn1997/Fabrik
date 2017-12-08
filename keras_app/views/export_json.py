@@ -89,8 +89,8 @@ def export_json(request):
         dataLayers = ['ImageData', 'Data', 'HDF5Data', 'Input', 'WindowData',
                       'MemoryData', 'DummyData']
         processedLayer = {}
-        inputLayerId = None
-        outputLayerId = None
+        inputLayerId = []
+        outputLayerId =[]
 
         def isProcessPossible(layerId):
             inputs = net[layerId]['connection']['input']
@@ -107,9 +107,9 @@ def export_json(request):
             if(net[layerId]['info']['type'] in dataLayers):
                 stack.append(layerId)
             if (not net[layerId]['connection']['input']):
-                inputLayerId = layerId
+                inputLayerId.append(layerId)
             if (not net[layerId]['connection']['output']):
-                outputLayerId = layerId
+                outputLayerId.append(layerId)
 
         while(len(stack)):
             if ('Loss' in net[layerId]['info']['type'] or
@@ -149,7 +149,16 @@ def export_json(request):
                 return JsonResponse({'result': 'error', 'error': 'Cannot convert ' +
                                      net[layerId]['info']['type'] + ' to Keras'})
 
-        model = Model(net_out[inputLayerId], net_out[outputLayerId], name=net_name)
+        final_input=[]
+        final_output=[]
+        for i in inputLayerId:
+            final_input.append(net_out[i])
+
+        for j in outputLayerId:
+            final_output.append(net_out[j])
+
+
+        model = Model(inputs=final_input, outputs=final_output, name=net_name)
         json_string = Model.to_json(model)
         randomId = datetime.now().strftime('%Y%m%d%H%M%S')+randomword(5)
         with open(BASE_DIR+'/media/'+randomId+'.json', 'w') as f:
