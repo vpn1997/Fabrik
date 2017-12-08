@@ -665,7 +665,7 @@ class Content extends React.Component {
   infoModal() {
     this.modalHeader = "About"
     this.modalContent = `Fabrik is an online collaborative platform to build, visualize and train deep\
-                         learning models via a simple drag-and-drop interface. It allows researchers to\
+                         learning models via a simple drag-and-drop interface. It allows researchers to\ 
                          collaboratively develop and debug models using a web GUI that supports importing,\
                          editing and exporting networks written in widely popular frameworks like Caffe,\
                          Keras, and TensorFlow.`;
@@ -677,7 +677,7 @@ class Content extends React.Component {
   }
   zooModal() {
     this.modalHeader = null;
-
+    this.modalContent = <ModelZoo importNet={this.importNet}/>;
     this.openModal();
   }
   render() {
@@ -761,3 +761,4 @@ class Content extends React.Component {
 }
 
 export default Content;
+
