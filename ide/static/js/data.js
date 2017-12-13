@@ -1431,7 +1431,7 @@ export default {
         name: 'Recurrent Initializer',
         value: 'Orthogonal',
         type: 'select',
-        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal', 
+        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal',
           'VarianceScaling', 'Orthogonal', 'Identity', 'lecun_uniform', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform'],
         required: false
       },
@@ -1577,7 +1577,7 @@ export default {
         name: 'Recurrent Initializer',
         value: 'Orthogonal',
         type: 'select',
-        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal', 
+        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal',
           'VarianceScaling', 'Orthogonal', 'Identity', 'lecun_uniform', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform'],
         required: false
       },
@@ -1723,7 +1723,7 @@ export default {
         name: 'Recurrent Initializer',
         value: 'Orthogonal',
         type: 'select',
-        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal', 
+        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal',
           'VarianceScaling', 'Orthogonal', 'Identity', 'lecun_uniform', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform'],
         required: false
       },
@@ -2182,7 +2182,7 @@ export default {
         name: 'Moving Mean Initializer',
         value: 'Zeros',
         type: 'select',
-        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal', 'VarianceScaling', 'Orthogonal', 'Identity', 
+        options: ['Zeros', 'Ones', 'Constant', 'RandomNormal', 'RandomUniform', 'TruncatedNormal', 'VarianceScaling', 'Orthogonal', 'Identity',
         'lecun_uniform', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform'],
         required: false
       },
@@ -2417,7 +2417,7 @@ export default {
     },
     learn: false
   },
-  ThresholdedReLU: { 
+  ThresholdedReLU: {
     name: 'Thresholded ReLU',
     color: '#009688',
     endpoint: {
@@ -3019,6 +3019,44 @@ export default {
     learn: true
   },
   /* ********** Utility Layers ********** */
+
+    TimeDistributed: {
+    name: 'TimeDistributed',
+    color: '#03a9f4',
+    endpoint: {
+      src: ['Bottom'],
+      trg: ['Top']
+    },
+    params: {
+      axis: {
+        name: 'Axis',
+        value: 1,
+        type: 'number',
+        required: false
+      },
+      end_axis: {
+        name: 'End Axis',
+        value: -1,
+        type: 'number',
+        required: false
+      },
+      caffe: {
+        name: 'Available Caffe',
+        value: true,
+        type: 'checkbox',
+        required: false
+      }
+    },
+    props: {
+      name: {
+        name: 'Name',
+        value: '',
+        type: 'text'
+      }
+    },
+    learn: false
+  },
+
   Flatten: {
     name: 'flatten',
     color: '#03a9f4',
